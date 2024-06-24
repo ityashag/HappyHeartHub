@@ -8,9 +8,7 @@ services:
       - "4000:27017"
 
   nodejs:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: yashcse21/major1:node_app
     container_name: nodejs
     environment:
       - DB=mongodb://mongodb:27017
@@ -19,3 +17,9 @@ services:
       - "8080:8080"
     depends_on:
       - mongodb
+      - knn
+  knn:
+    image: yashcse21/major1:knn
+    container_name: knn
+    ports:
+      - "3000:3000"
